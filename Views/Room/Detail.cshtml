@@ -1,0 +1,19 @@
+﻿ 
+ @model Room
+
+ <img src="~/img/@Model.Image" style="width:200px; height:200px" />
+ <h1>@Model.Title</h1>
+ <h1>@Model.Desc</h1>
+  <h1>@Model.Price</h1>
+
+ <h3>Spec:</h3>
+ @foreach (var item in Model.SpecRooms)
+ {
+	 <span>@Html.Raw(item.Spec.Icon) @item.Spec.SpecName</span>
+ }
+ <hr /> <hr /> <hr /> <hr /> <hr /> <hr /> <hr />
+ <h3>BookType</h3>
+ @foreach (var item in Model.RoomBookTypes)
+ {
+	 <span>@item.BookType.Name</span>
+ }

@@ -383,14 +383,15 @@
                             <div class="position-relative">
                                 <img class="img-fluid" src="~/img/@item.Image" alt="">
                                 <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                    <a class="btn btn-square btn-primary mx-1" href=""></a>
-                                    <a class="btn btn-square btn-primary mx-1" href=""></a>
-                                    <a class="btn btn-square btn-primary mx-1" href=""></a>
+                                @foreach (var soc in item.Socials)
+                                {
+                                       <a class="btn btn-square btn-primary mx-1" href="@soc.Link">@Html.Raw(soc.Icon)</a>
+                                }
                                 </div>
                             </div>
                             <div class="text-center p-4 mt-3">
-                                <h5 class="fw-bold mb-0">hecer</h5>
-                                <small>Designation</small>
+                                <h5 class="fw-bold mb-0">@item.FullName</h5>
+                                <small>@item.Position.Name</small>
                             </div>
                         </div>
                         </div>

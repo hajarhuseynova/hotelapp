@@ -4,6 +4,7 @@ using HotelApp.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelApp.Migrations
 {
     [DbContext(typeof(HotelAppDbContext))]
-    partial class HotelAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230623111445_tabl")]
+    partial class tabl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -395,7 +397,11 @@ namespace HotelApp.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("RoomId")
+                    b.Property<string>("RoomId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoomId1")
                         .HasColumnType("int");
 
                     b.Property<int>("SpecId")
@@ -406,7 +412,7 @@ namespace HotelApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoomId");
+                    b.HasIndex("RoomId1");
 
                     b.HasIndex("SpecId");
 
@@ -458,7 +464,7 @@ namespace HotelApp.Migrations
                 {
                     b.HasOne("HotelApp.Models.Room", "Room")
                         .WithMany("SpecRooms")
-                        .HasForeignKey("RoomId")
+                        .HasForeignKey("RoomId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -20,14 +20,17 @@ namespace HotelApp.Controllers
         public async Task<IActionResult> Index()
         {
            HomeVM homeVM = new HomeVM();
-            homeVM.Slides = _context.Slides.Where(x => !x.IsDeleted).ToList();
-            homeVM.Settings = _context.Settings.FirstOrDefault();
-            homeVM.Services = _context.Services.Where(x => !x.IsDeleted).ToList();
-            homeVM.Employees = _context.Employees.Where(x => !x.IsDeleted).Include(x => x.Position).
-                Include(x => x.Socials.Where(s => !s.IsDeleted).ToList();
+            homeVM.Slides = await _context.Slides.Where(x => !x.IsDeleted).ToListAsync();
+            homeVM.Settings = await _context.Settings.FirstOrDefaultAsync();
+            homeVM.Services = await _context.Services.Where(x => !x.IsDeleted).ToListAsync();
+            homeVM.Employees = await _context.Employees.Where(x => !x.IsDeleted).Include(x => x.Position).
+                Include(x => x.Socials.Where(s => !s.IsDeleted)).ToListAsync();
             return View(homeVM);
         }
-
+        public  IActionResult Error()
+        {
+            return View();
+        }
         //public async Task<IActionResult> CreatePosition()
         //{
         //    Position position = new Position {

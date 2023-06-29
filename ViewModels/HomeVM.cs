@@ -7,6 +7,7 @@ namespace HotelApp.ViewModels
         public IEnumerable<Slider> Slides { get; set; }
         public IEnumerable<Employee> Employees { get; set; }
         public IEnumerable<Service> Services { get; set; }
+        public IEnumerable<Room> Rooms { get; set; }
         public Setting Settings { get; set; }
         
     }
